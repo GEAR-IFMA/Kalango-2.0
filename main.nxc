@@ -1,0 +1,9 @@
+#include <"navegacao.h">
+
+task main(){
+  //gira_90_Hor();
+  gira_90_Ant();
+  //OnRev(OUT_C, 100);
+  Wait(SEC_1);
+  Stop(1);
+}
