@@ -17,7 +17,5 @@ void setupRobot(){
 void spin(float spinAngle){
   float proportion = (axisWidth/2)/tireRadius;
   float newAngle = (spinAngle*proportion);
-  //RotateMotorPID(leftMotor,power,newAngle , 50, 50, 50);
   RotateMotorExPID(motors, power, newAngle, 100, true, true,50,50,50);
-//  RotateMotorEx(byte outputs, char pwr, long angle, char turnpct, bool sync, bool stop)
 }
