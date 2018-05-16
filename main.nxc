@@ -1,9 +1,9 @@
-#include <"navegacao.h">
+
+#include <"navigation.nxc">
 
 task main(){
-  //gira_90_Hor();
-  gira_90_Ant();
-  //OnRev(OUT_C, 100);
+  setupRobot();
+  spin(-90.0);
   Wait(SEC_1);
   Stop(1);
 }

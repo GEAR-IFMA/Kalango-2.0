@@ -1,0 +1,19 @@
+int power;
+float tireRadius;
+float axisWidth;
+byte leftMotor;
+byte rightMotor;
+
+void setupRobot(){
+  power = 100;
+  tireRadius = 2.75;
+  axisWidth = 11.5;
+  leftMotor = OUT_B;
+  rightMotor = OUT_A;
+}
+
+void spin(float spinAngle){
+  float proportion = axisWidth/tireRadius;
+  float newAngle = (spinAngle * proportion);
+  RotateMotorPID(leftMotor,power,newAngle , 50, 50, 50);
+}
