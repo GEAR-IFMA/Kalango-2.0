@@ -3,17 +3,21 @@ float tireRadius;
 float axisWidth;
 byte leftMotor;
 byte rightMotor;
+byte motors;
 
 void setupRobot(){
-  power = 100;
+  power = 60;
   tireRadius = 2.75;
   axisWidth = 11.5;
   leftMotor = OUT_B;
   rightMotor = OUT_A;
+  motors = OUT_AB;
 }
 
 void spin(float spinAngle){
-  float proportion = axisWidth/tireRadius;
-  float newAngle = (spinAngle * proportion);
-  RotateMotorPID(leftMotor,power,newAngle , 50, 50, 50);
+  float proportion = (axisWidth/2)/tireRadius;
+  float newAngle = (spinAngle*proportion);
+  //RotateMotorPID(leftMotor,power,newAngle , 50, 50, 50);
+  RotateMotorExPID(motors, power, newAngle, 100, true, true,50,50,50);
+//  RotateMotorEx(byte outputs, char pwr, long angle, char turnpct, bool sync, bool stop)
 }

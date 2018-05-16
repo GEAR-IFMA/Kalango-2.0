@@ -3,7 +3,10 @@
 
 task main(){
   setupRobot();
-  spin(-90.0);
-  Wait(SEC_1);
+  spin(90.0);
+  Wait(SEC_3);
+  spin(-180);
+  Wait(SEC_3);
+  spin(360);
   Stop(1);
 }
