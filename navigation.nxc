@@ -18,7 +18,7 @@ void spin(float spinAngle){
   RotateMotorExPID(MOTORS, POWER, newAngle, 100, true, true,50,50,50);
 }
 
-void gofwdTil(int cor, int time){
+void goFwdTil(int cor, int time){
   while(Sensor(S1) != cor){
     TextOut(0, 40,"anda");
     OnFwd(MOTORS, POWER);
