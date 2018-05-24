@@ -1,12 +1,15 @@
 
 #include <"navigation.nxc">
+//#include <"cor.h">
 
 task main(){
-  setupRobot();
+  /* setupRobot();
   spin(90.0);
   Wait(SEC_3);
   spin(-180);
   Wait(SEC_3);
   spin(360);
-  Stop(1);
+  Stop(1); */
+  SetSensorColorFull(S1);
+  gofwdTil(5);
 }
