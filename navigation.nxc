@@ -17,7 +17,7 @@ void spin(float spinAngle){
   float newAngle = (spinAngle*proportion);
   RotateMotorExPID(MOTORS, POWER, newAngle, 100, true, true,50,50,50);
 }
-
+  
 void goFwdTil(int cor, int time){
   while(Sensor(S1) != cor){
     TextOut(0, 40,"anda");
