@@ -1,0 +1,28 @@
+void print(string text)
+{
+  ClearScreen();
+  TextOut(0, LCD_LINE1, text);
+}
+
+void log(string text, string lcd[])
+{
+  /* Continuum text printing */
+  ClearScreen();
+  TextOut(0, LCD_LINE8, "LOG INIT");
+  int i;
+  string tmp;
+  for(i=7; i<=0; --i)
+  {
+    tmp = lcd[i+1];
+    lcd[i+1] = lcd[i];
+  }
+  lcd[7] = text;
+  TextOut(0, LCD_LINE1, lcd[0]);
+  TextOut(0, LCD_LINE2, lcd[1]);
+  TextOut(0, LCD_LINE3, lcd[2]);
+  TextOut(0, LCD_LINE4, lcd[3]);
+  TextOut(0, LCD_LINE5, lcd[4]);
+  TextOut(0, LCD_LINE6, lcd[5]);
+  TextOut(0, LCD_LINE7, lcd[6]);
+  TextOut(0, LCD_LINE8, lcd[7]);
+};

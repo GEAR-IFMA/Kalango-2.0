@@ -1,0 +1,29 @@
+#include <"navigation.nxc">
+string SCREEN[] = {"*", "*", "*", "*", "*", "*", "*", "*"};
+
+task run()
+{
+  print("andando");
+  Wait(SEC_1);
+}
+task stop()
+{
+  print("parou")
+  Wait(SEC_1);
+}
+
+task main()
+{
+  bool has_arrived = false;
+  setupColorSensor();
+  if (csr.Result == NO_ERR) {
+    if (csr.ColorValue != 5)
+    {
+      Precedes(run,stop);
+    }
+  }
+  else
+  {
+    print("error");
+  }
+}

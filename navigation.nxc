@@ -1,27 +1,32 @@
+#include <"utils.nxc">
 #define POWER 60
-float tireRadius;
-float axisWidth;
 #define leftMotor OUT_B
 #define rightMotor OUT_A
 #define MOTORS OUT_AB
+bool isSet = false;
+float tireRadius;
+float axisWidth;
+
 int nColor;
 
+/* Setup the robot atributes */
 void setupRobot(){
   tireRadius = 2.75;
   axisWidth = 11.5;
   nColor = Sensor(S1);
+  isSet = TRUE;
 }
+void setup
 
+/* Rotate the entire body of the robot around the axis */
 void spin(float spinAngle){
-  float proportion = (axisWidth/2)/tireRadius;
-  float newAngle = (spinAngle*proportion);
-  RotateMotorExPID(MOTORS, POWER, newAngle, 100, true, true,50,50,50);
-}
-  
-void goFwdTil(int cor, int time){
-  while(Sensor(S1) != cor){
-    TextOut(0, 40,"anda");
-    OnFwd(MOTORS, POWER);
-    Wait(time);
+  if(isSet){
+    float proportion = (axisWidth/2)/tireRadius;
+    float newAngle = (spinAngle*proportion);
+    RotateMotorExPID(MOTORS, POWER, newAngle, 100, true, true,50,50,50);
+    print("end of spin");
+  }
+  else{
+    echo("robot was not set.");
   }
 }
