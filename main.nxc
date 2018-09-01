@@ -1,4 +1,4 @@
-int sem;
+int semaphore;
 
 task move_square()
 {
@@ -24,7 +24,7 @@ task submain()
     {
       until (sem == 0); sem = 1;
       RotateMotor(OUT_B, 20, 12);
-      sem = 0;
+      semaphore = 0;
     }
   }
 }
