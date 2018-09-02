@@ -1,21 +1,44 @@
 #include <"navigation.nxc">
-string SCREEN[] = {"*", "*", "*", "*", "*", "*", "*", "*"};
+bool semaphore;
+ColorSensorReadType csr;
+//http://bricxcc.sourceforge.net/nbc/nxcdoc/nxcapi/ex__sys_color_sensor_read_8nxc-example.html#a9
 
 task run()
 {
-  print("andando");
+  while (true)
+  {
+    until(semaphore == false); semaphore = true;
+    print("run");
+    Wait(500);
+    semaphore = true;
+  }
+
   Wait(SEC_1);
 }
-task stop()
+
+task submain()
 {
-  print("parou")
-  Wait(SEC_1);
+  while (true)
+  {
+    SysColorSensorRead(csr);
+    if (csr.ColorValue == 5)
+    {
+      until (semaphore == false); semaphore = true;
+      PlayTone(440, 500);
+      Wait(SEC_1);
+      semaphore = false;
+    }
+  }
 }
 
 task main()
 {
-  bool has_arrived = false;
-  setupColorSensor();
+  //bool has_arrived = false;
+  semaphore = false;
+  csr.Port = S2;
+  SetSensorColorFull(S2);
+  Precedes(run,submain);
+  /*
   if (csr.Result == NO_ERR) {
     if (csr.ColorValue != 5)
     {
@@ -26,4 +49,5 @@ task main()
   {
     print("error");
   }
+  */
 }

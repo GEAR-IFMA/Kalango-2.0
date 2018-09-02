@@ -31,6 +31,6 @@ task submain()
 
 task main()
 {
-  sem = 0;
+  semaphore = 0;
   Precedes(move_square, submain);
 }

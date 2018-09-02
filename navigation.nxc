@@ -13,10 +13,10 @@ int nColor;
 void setupRobot(){
   tireRadius = 2.75;
   axisWidth = 11.5;
-  nColor = Sensor(S1);
-  isSet = TRUE;
+  /* nColor = Sensor(S1); */
+  isSet = true;
 }
-void setup
+
 
 /* Rotate the entire body of the robot around the axis */
 void spin(float spinAngle){
@@ -27,6 +27,6 @@ void spin(float spinAngle){
     print("end of spin");
   }
   else{
-    echo("robot was not set.");
+    print("robot was not set.");
   }
 }

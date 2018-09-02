@@ -1,1 +1,23 @@
-batbata
+#include <"navigation.nxc">
+
+task main()
+{
+  setupRobot();
+  SetSensorColorFull(S2);
+  ColorSensorReadType csr;
+  csr.Port = S2;
+
+  while (true)
+  {
+    SysColorSensorRead(csr);
+    if(csr.ColorValue == 1){
+      spin(90);
+      NumOut(0, LCD_LINE1, csr.ColorValue);
+    }
+    else{
+      print("anda par frente");
+    }
+    //se cor for preta faz uma ação
+    //se nao anda
+  }
+}
